@@ -1,3 +1,4 @@
+from graphics import Line, Point
 class Cell:
     def __init__(self, window):
         self.has_left_wall = True
