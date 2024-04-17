@@ -3,27 +3,25 @@ from tkinter import Tk, BOTH, Canvas
 
 class Window:
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
         self.__root = Tk()
         self.__root.title("Maze")
-        self.canvas = Canvas(self.__root, width=self.width, height=self.height)
-        self.canvas.pack()
-        self.window_running = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
+        self.canvas = Canvas(self.__root, bg='white', width=width, height=height)
+        self.canvas.pack(fill=BOTH, expand=1)
+        self.__running = False
 
     def redraw(self):
         self.__root.update_idletasks()
         self.__root.update()
 
     def wait_for_close(self):
-        self.window_running = True
-        while self.window_running:
+        self.__running = True
+        while self.__running:
             self.redraw()
         print('window closed!')
 
     def close(self):
-        self.window_running = False
+        self.__running = False
     
     def draw_line(self, line, fill_color):
         line.draw(self.canvas, fill_color)
@@ -45,4 +43,4 @@ class Line:
         canvas.create_line(
             self.x1, self.y1, self.x2, self.y2, fill=fill_color, width=2
         )
-        canvas.pack()
+        canvas.pack(fill=BOTH, expand=1)
