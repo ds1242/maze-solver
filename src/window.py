@@ -12,17 +12,17 @@ class Window:
         self.window_running = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
 
-        def redraw(self):
-            self.__root.update_idletasks()
-            self.__root.update()
+    def redraw(self):
+        self.__root.update_idletasks()
+        self.__root.update()
 
-        def wait_for_close(self):
-            self.window_running = True
-            while self.window_running:
-                self.redraw()
+    def wait_for_close(self):
+        self.window_running = True
+        while self.window_running:
+            self.redraw()
 
-        def close(self):
-            self.window_running = False
+    def close(self):
+        self.window_running = False
 
 
 
