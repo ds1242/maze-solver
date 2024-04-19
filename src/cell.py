@@ -28,3 +28,22 @@ class Cell:
         if self.has_bottom_wall:
             wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
             self._win.draw_line(wall, "black")
+
+    def draw_move(self, to_cell, undo=False):
+        color = 'red' 
+        if undo:
+            color = 'gray'
+        half_length = abs(self._x2 - self._x1) // 2
+
+        self_center_x = half_length + self._x1 
+        self_center_y = half_length + self._y2
+
+        half_length2 = abs(to_cell._x2 - to_cell._x1) // 2
+        to_cell_center_x = half_length2 + to_cell._x1 
+        to_cell_center_y = half_length2 + to_cell._y1
+     
+        move_line = Line(Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y)) 
+        self._win.draw_line(move_line, color)
+
+
+
