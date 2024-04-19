@@ -35,12 +35,12 @@ class Cell:
         else:
             color = 'gray'
 
-        self_center.x = (self._x1 + self._x2) // 2
-        self_center.y = (self._y1 + self._y2) // 2
-        to_cell_center.x = (to_cell._x1 + to_cell._x2) // 2
-        to_cell_center.y = (to_cell._y1 + to_cell._y2) // 2
+        self_center_x = (self._x1 + self._x2) // 2
+        self_center_y = (self._y1 + self._y2) // 2
+        to_cell_center_x = (to_cell._x1 + to_cell._x2) // 2
+        to_cell_center_y = (to_cell._y1 + to_cell._y2) // 2
      
-        move_line = Line(Point(self_center.x, self_center.y), Point(to_cell_center.x, to_cell_center.y) 
+        move_line = Line( Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y ) 
         self._win.draw_line(move_line, color)
 
 
