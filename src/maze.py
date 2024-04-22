@@ -91,7 +91,21 @@ class Maze:
 
             if next_i == i - 1:
                 self._cells[i][j].has_top_wall = False
-                self._draw_cell(i, j)
                 self._cells[next_i][next_j].has_bottom_wall = False
-                self._draw_cell(next_i, next_j)
 
+            if next_i == i + 1:
+                self._cells[i][j].has_bottom_wall = False
+                self._cells[next_i][next_j].has_top_wall = False
+
+            if next_j == j - 1:
+                self._cells[i][j].has_left_wall = False
+                self._cells[next_i][next_j].has_right_wall = False
+
+            if next_j == j + 1:
+                self._cells[i][j].has_bottom_wall = False
+                self._cells[next_i][next_j].has_top_wall = False
+            
+            self._draw_cell(next_i, next_j)
+            self._draw_cell(i, j)
+
+            self._break_walls_r(next_i, next_j)
