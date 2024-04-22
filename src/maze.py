@@ -59,10 +59,8 @@ class Maze:
 
 
     def _break_entrance_and_exit(self):
-        top_left = self._cells[0][0]
-        bottom_right = self._cells[-1][-1]
-        top_left.has_top_wall = False
-        bottom_right.has_bottom_wall = False
-        top_left.draw_cell()
-        bottom_right.draw_cell()
+        self._cells[0][0].has_top_wall = False
+        self._draw_cell(0,0)
+        self._cells[self._num_cols - 1][self._num_rows - 1].has_bottom_wall = False
+        self._draw_cell(self._num_cols - 1, self._num_rows -1)
         
