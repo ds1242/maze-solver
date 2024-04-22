@@ -88,4 +88,10 @@ class Maze:
                 return
             else:
                 next_i, next_j = random.choice(possible_directions)
-                self._break_walls_r(next_i, next_j)
+
+            if next_i == i - 1:
+                self._cells[i][j].has_top_wall = False
+                self._draw_cell(i, j)
+                self._cells[next_i][next_j].has_bottom_wall = False
+                self._draw_cell(next_i, next_j)
+
