@@ -17,32 +17,29 @@ class Cell:
         self._x2 = x2
         self._y2 = y2
         if self.has_left_wall:
-            wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y1), Point(x1, y2))
+            self._win.draw_line(line)
         else:
-            wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
-            self._win.draw_line(wall, '#d9d9d9')
-
-        if self.has_right_wall:
-            wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
-            self._win.draw_line(wall, "black")
-        else:
-            wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
-            self._win.draw_line(wall, '#d9d9d9')
-
+            line = Line(Point(x1, y1), Point(x1, y2))
+            self._win.draw_line(line, "white")
         if self.has_top_wall:
-            wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y1), Point(x2, y1))
+            self._win.draw_line(line)
         else:
-            wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
-            self._win.draw_line(wall, '#d9d9d9')
-
+            line = Line(Point(x1, y1), Point(x2, y1))
+            self._win.draw_line(line, "white")
+        if self.has_right_wall:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            self._win.draw_line(line)
+        else:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            self._win.draw_line(line, "white")
         if self.has_bottom_wall:
-            wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y2), Point(x2, y2))
+            self._win.draw_line(line)
         else:
-            wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
-            self._win.draw_line(wall, '#d9d9d9')
+            line = Line(Point(x1, y2), Point(x2, y2))
+            self._win.draw_line(line, "white")
 
 
 
