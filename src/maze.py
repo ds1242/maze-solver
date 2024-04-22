@@ -72,9 +72,20 @@ class Maze:
     
     def _break_walls_r(self, i, j):
         self._cells[i][j].visited = True
-        while to_visit:
+        while True:
+            possible_directions = []
 
-            to_visit = [i, j]
+            if (i - 1 >= 0) and (not self._cells[i - 1][j].visited):
+                possible_directions.append((i - 1, j ))
+            if (i + 1 <= self._num_rows) and (not self._cells[i + 1][j].visited):
+                possible_directions.append((i + 1, j))
+            if (j - 1 >= 0) and (not self._cells[i][j - 1].visited):
+                possible_directions.append((i, j - 1))
+            if (j + 1 <= self._num_cols) and (not self._cells[i][j + 1].visited):
+                possible_directions.append((i, j + 1))
 
-             
-
+            if not possible_directions:
+                return
+            else:
+                next_i, next_j = random.choice(possible_directions)
+                self._break_walls_r(next_i, next_j)
