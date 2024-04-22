@@ -29,6 +29,11 @@ class Cell:
             wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
             self._win.draw_line(wall, "black")
 
+        if not self.has_top_wall:
+            wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
+            self._win.draw_line(wall, '#d9d9d9')
+
+
     def draw_move(self, to_cell, undo=False):
         color = 'red' 
         if undo:
