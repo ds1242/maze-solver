@@ -110,7 +110,8 @@ class Maze:
                 self._cells[i][j].has_top_wall = False
                 self._cells[i][j - 1].has_bottom_wall = False
             
-
+            # recursively visit the next cell
+            self._break_walls_r(next_index[0], next_index[1])
 
     def _reset_cells_visited(self):
         pass
