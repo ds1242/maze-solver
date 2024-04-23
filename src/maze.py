@@ -22,13 +22,13 @@ class Maze:
         self._cell_size_x = cell_size_x
         self._cell_size_y = cell_size_y
         self._win = win
-        self._seed = seed 
-        if self._seed is not None:
-            random.seed(self._seed)
+        if seed:
+            random.seed(seed)
             
-
+        
         self._create_cells()
         self._break_entrance_and_exit()
+        self._break_walls_r(0,0)
         
     def _create_cells(self):
 
@@ -109,3 +109,6 @@ class Maze:
             self._draw_cell(i, j)
 
             self._break_walls_r(next_i, next_j)
+
+    def _reset_cells_visited(self):
+        pass
