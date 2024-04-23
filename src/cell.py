@@ -5,14 +5,16 @@ class Cell:
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self._visited = False
         self._x1 = None
         self._y1 = None
         self._x2 = None
         self._y2 = None
         self._win = window
-        self._visited = False
     
-    def draw(self, x1, y1, x2, y2):        
+    def draw(self, x1, y1, x2, y2):  
+        if self._win is None:
+            return      
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
@@ -45,9 +47,6 @@ class Cell:
 
 
     def draw_move(self, to_cell, undo=False):
-        color = 'red' 
-        if undo:
-            color = 'gray'
         half_length = abs(self._x2 - self._x1) // 2
 
         self_center_x = half_length + self._x1 
@@ -57,6 +56,10 @@ class Cell:
         to_cell_center_x = half_length2 + to_cell._x1 
         to_cell_center_y = half_length2 + to_cell._y1
      
+        color = 'red' 
+        if undo:
+            color = 'gray'
+            
         move_line = Line(Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y)) 
         self._win.draw_line(move_line, color)
 
