@@ -30,7 +30,7 @@ class Maze:
         self._break_entrance_and_exit()
         self._break_walls_r(0,0)
         self._reset_cells_visited()
-
+        self.solve()
         
     def _create_cells(self):
         for i in range(self._num_cols):
@@ -94,7 +94,7 @@ class Maze:
                
             direction_index = random.randrange(len(possible_directions))
             next_index = possible_directions[direction_index]
-
+            # right
             if next_index[0] == i + 1:
                 self._cells[i][j].has_right_wall = False
                 self._cells[i + 1][j].has_left_wall = False
@@ -118,5 +118,18 @@ class Maze:
         for i in range(self._num_cols):
             for j in range(self._num_rows):
                 self._cells[i][j]._visited = False
+
+    def solve(self):
+        return self._solve_r(0, 0)
+
+
+    def _solve_r(self,i, j):
+        self._animate()
+        self._cells[i][j]._visited = True
+        if i > 0 and self._cells[i][j].has_left_wall == False:
+            self._cells[i][j].draw_move(self._cells[i-1][j])
+            if self._cells[i - 1][j]._solve_r(i - 1, j) == True:
+                return True
+            self._cells[i][j].draw_move(self._cells[i - 1][j], True) 
 
 
