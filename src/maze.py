@@ -31,7 +31,6 @@ class Maze:
         self._break_walls_r(0,0)
         
     def _create_cells(self):
-
         for i in range(self._num_cols):
             temp = []
             for j in range(self._num_rows):
