@@ -10,6 +10,7 @@ class Cell:
         self._x2 = None
         self._y2 = None
         self._win = window
+        self._visited = False
     
     def draw(self, x1, y1, x2, y2):        
         self._x1 = x1
@@ -17,17 +18,31 @@ class Cell:
         self._x2 = x2
         self._y2 = y2
         if self.has_left_wall:
-            wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
-            self._win.draw_line(wall, "black")
-        if self.has_right_wall:
-            wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y1), Point(x1, y2))
+            self._win.draw_line(line)
+        else:
+            line = Line(Point(x1, y1), Point(x1, y2))
+            self._win.draw_line(line, "white")
         if self.has_top_wall:
-            wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y1), Point(x2, y1))
+            self._win.draw_line(line)
+        else:
+            line = Line(Point(x1, y1), Point(x2, y1))
+            self._win.draw_line(line, "white")
+        if self.has_right_wall:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            self._win.draw_line(line)
+        else:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            self._win.draw_line(line, "white")
         if self.has_bottom_wall:
-            wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
-            self._win.draw_line(wall, "black")
+            line = Line(Point(x1, y2), Point(x2, y2))
+            self._win.draw_line(line)
+        else:
+            line = Line(Point(x1, y2), Point(x2, y2))
+            self._win.draw_line(line, "white")
+
+
 
     def draw_move(self, to_cell, undo=False):
         color = 'red' 
@@ -44,6 +59,5 @@ class Cell:
      
         move_line = Line(Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y)) 
         self._win.draw_line(move_line, color)
-
 
 
