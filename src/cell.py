@@ -47,9 +47,6 @@ class Cell:
 
 
     def draw_move(self, to_cell, undo=False):
-        color = 'red' 
-        if undo:
-            color = 'gray'
         half_length = abs(self._x2 - self._x1) // 2
 
         self_center_x = half_length + self._x1 
@@ -59,6 +56,10 @@ class Cell:
         to_cell_center_x = half_length2 + to_cell._x1 
         to_cell_center_y = half_length2 + to_cell._y1
      
+        color = 'red' 
+        if undo:
+            color = 'gray'
+            
         move_line = Line(Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y)) 
         self._win.draw_line(move_line, color)
 

@@ -49,7 +49,7 @@ class Maze:
             return 
         
         top_left_x = self._x1 + i * self._cell_size_x
-        top_left_y = self._y1 + i * self._cell_size_y
+        top_left_y = self._y1 + j * self._cell_size_y
 
         bottom_right_x = top_left_x + self._cell_size_x
         bottom_right_y = top_left_y + self._cell_size_y
@@ -74,7 +74,7 @@ class Maze:
         self._cells[i][j]._visited = True
         while True:
             possible_directions = []
-
+            #left
             if i > 0 and not self._cells[i - 1][j]._visited:
                 possible_directions.append((i - 1, j))
             # right
@@ -87,7 +87,7 @@ class Maze:
             if j < self._num_rows - 1 and not self._cells[i][j + 1]._visited:
                 possible_directions.append((i, j + 1))
 
-            if not possible_directions:
+            if len(possible_directions) == 0:
                 self._draw_cell(i,j)
                 return
                
