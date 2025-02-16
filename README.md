@@ -6,7 +6,15 @@ depth first search to traverse through the maze creating a read line on moves in
 If it hits a wall and turns back the line is turned gray while it searchs it's way through the
 the maze.
 
+## Quick Start and Usage
+- Python 3.12+ required
+- Python Tkinter required
+- ./main.sh should execute the Python script from a terminal
 
-### Future Plans
-Add user input for the size of the maze
-Add user input for the random number to change the shape of the maze
+## Contributing
+Feel free to clone and make it your own
+
+## Future Plans
+- Add user input for the size of the maze
+- Add user input for the random number to change the shape of the maze
+- Add button to Canvas the program when it is done
